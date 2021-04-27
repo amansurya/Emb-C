@@ -1,53 +1,32 @@
-/**
- * @file project_main.c
- * @author Bharath.G ()
- * @brief Project to Blink an LED at 1000ms ON and 500 ms OFF Interval
- * @version 0.1
- * @date 2021-04-23
- * 
- * @copyright Copyright (c) 2021
- * 
- */
-#include "project_config.h"
-
-#include "user_utils.h"
-#include "blinky.h"
-
-/**
- * @brief Initialize all the Peripherals and pin configurations
- * 
- */
-void peripheral_init(void)
-{
-	/* Configure LED Pin */
-	DDRB |= (1 << DDB0);
-}
-
-void change_led_state(uint8_t state)
-{
-	LED_PORT = (state << LED_PIN);
-}
 
 
-/**
- * @brief Main function where the code execution starts
- * 
- * @return int Return 0 if the program completes successfully
- * @note PORTB0 is in sink config. i.e when pin is Low, the LED will turn OFF
- * @note PORTB0 is in sink config. i.e when pin is High, the LED will turn ON
- */
+#include <avr/io.h>
+#include<util/delay.h>
 int main(void)
 {
-	/* Initialize Peripherals */
-	peripheral_init();
+DDRB |=(1<<PB0);//SET B0=1 FOR LED
+    // Insert code
+DDRD&=~(1<<PD0);//CLEAR BIT
+PORTD|=(1<<PD0);
+DDRD&=~(1<<PD1);//CLEAR BIT
+PORTD|=(1<<PD1);
+    while(1){
+            if((!(PIND&(1<<PD0)))&&(!(PIND&(1<<PD1)))){
+                PORTB |=(1<<PB0);
 
-	for(;;)
-	{
-        change_led_state(LED_ON);
-		delay_ms(LED_ON_TIME);
-		
-        change_led_state(LED_OFF);
-		delay_ms(LED_OFF_TIME);	
-	}
-	return 0;
+                //_delay_ms(2000);
+            }
+            else{
+                 PORTB&=~(1<<PB0);
+                 //_delay_ms(2000);
+            }
+
+    }
+/**
+* If the person is seated, the button sensor D0 will detect it and will be ON if seated.
+* If we want the temperature sensor to be activated then button D1 will detect it and if both are 1 , the temperature sensor (represented by LED) will turn ON.
+*/
+
+
+    return 0;
 }
