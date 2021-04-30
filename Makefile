@@ -1,9 +1,8 @@
-PROJ_NAME = Automated Seat heating equipment
+PROJ_NAME = Blinky
 
 BUILD_DIR = Build
 
 # All Source code files
-
 SRC = project_main.c\
 src/activity1.c src/activity2.c src/activity3.c src/activity4.c
 
@@ -35,6 +34,7 @@ endif
 all:$(BUILD_DIR)
 # Compile the code and generate the ELF file
 	$(CC) -g -Wall -Os -mmcu=atmega328  $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).elf)
+	avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Build/Blinky.hex
 
 $(BUILD_DIR):
 # Create directory to store the built files
