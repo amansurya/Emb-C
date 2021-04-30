@@ -5,18 +5,21 @@
 
 int main()
 {
-uint16_t act2;
-int act3;
+
+uint16_t k1;
+int k2;
 while(1)
 {
-int act1;
-act1=activity1();
+int b1;
+b1=activity1();
 
-if(act1==1)
+if(b1==1)
 {
-act2=activity2();
-act3=activity3(act2);
-activity4(act3);
+k1=activity2();
+k2=activity3(k1);
+activity4(k2);
+
 }
+
 }
 }
