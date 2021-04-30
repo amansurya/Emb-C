@@ -1,8 +1,8 @@
 # Embedded C Programming Examples with Continuous Integration and Code Quality
 
-# LED Blinking 
+# main project 
 
-## In Action
+## In Action 
 
 |ON|OFF|
 |:--:|:--:|
