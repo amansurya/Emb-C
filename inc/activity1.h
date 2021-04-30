@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#ifndef ACTIVITY1_H_INCLUDED
-#define ACTIVITY1_H_INCLUDED
+#ifndef Activity1H
+#define Activity1H
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -45,4 +45,4 @@
  */
 int activity1(void);
 
-#endif // ACTIVITY1_H_INCLUDED
+#endif 
