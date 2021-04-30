@@ -18,25 +18,25 @@
  * @brief macro for button on
  * 
  */
-#define BUTTON_ON !(PIND&(1<<PD2))
+#define ButtonOn !(PIND&(1<<PD2))
 
 /**
  * @brief macro for heater on
  * 
  */
-#define HEATER_ON !(PIND&(1<<PD3))
+#define HeaterOn !(PIND&(1<<PD3))
 
 /**
  * @brief macro for LED on
  * 
  */
-#define LED_ON PORTB|=(1<<PB0)
+#define LedOn PORTB|=(1<<PB0)
 
 /**
  * @brief macro for LED off
  * 
  */
-#define LED_OFF PORTB&=~(1<<PB0)
+#define LedOff PORTB&=~(1<<PB0)
 
 /**
  * @brief calling function of activity 1
