@@ -11,25 +11,25 @@ DDRB|=(1<<PB1);
 
 int temperature;
 _delay_ms(2);
-if(TEMP_COND_1)
+if(Cond1Temp)
 {
 OCR1A=204;
 temperature=20;
 _delay_ms(20);
 }
-if(TEMP_COND_2)
+if(Cond2Temp)
 {
 OCR1A=410;
 temperature=25;
 _delay_ms(20);
 }
-if(TEMP_COND_3)
+if(Cond3Temp)
 {
 OCR1A=717;
 temperature=29;
 _delay_ms(20);
 }
-if(TEMP_COND_4)
+if(Cond4Temp)
 {
 OCR1A=973;
 temperature=33;
