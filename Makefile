@@ -10,7 +10,7 @@ src/activity1.c src/activity2.c src/activity3.c src/activity4.c
 INC = -I inc
 
 # Find out the OS and configure the variables accordingly
-ifdef OS	# All configurations for Windwos OS
+ifdef OS # All configurations for Windwos OS
 # Correct the path based on OS
    FixPath = $(subst /,\,$1)
 # Name of the compiler used
@@ -20,11 +20,11 @@ ifdef OS	# All configurations for Windwos OS
 else #All configurations for Linux OS
    ifeq ($(shell uname), Linux)
 # Correct the path based on OS
-      FixPath = $1				
+      FixPath = $1    
 # Name of the compiler used
-	  CC = avr-gcc
+   CC = avr-gcc
 # Name of the elf to hex file converter used
-	  AVR_OBJ_CPY = avr-objcopy 
+   AVR_OBJ_CPY = avr-objcopy 
    endif
 endif
 
@@ -33,22 +33,22 @@ endif
 
 all:$(BUILD_DIR)
 # Compile the code and generate the ELF file
-	$(CC) -g -Wall -Os -mmcu=atmega328  $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).elf)
-	avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Build/Blinky.hex
+ $(CC) -g -Wall -Os -mmcu=atmega328 -DF_CPU=160000000UL $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).elf)
+ avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Build/Blinky.hex
 
 $(BUILD_DIR):
 # Create directory to store the built files
-	mkdir $(BUILD_DIR)
+ mkdir $(BUILD_DIR)
 
 analysis: $(SRC)
 # Analyse the code using Cppcheck command line utility
-	cppcheck --enable=all $^
+ cppcheck --enable=all $^
 
 doc:
 # Build the code code documentation using Doxygen command line utility
-	make -C documentation
+ make -C documentation
 
 clean:
 # Remove all the build files and generated document files
-	rm -rf $(call FixPath,$(BUILD_DIR)/*)
-	make -C documentation clean
+ rm -rf $(call FixPath,$(BUILD_DIR)/*)
+ make -C documentation clean
