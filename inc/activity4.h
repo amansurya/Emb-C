@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#ifndef ACTIVITY4_H_INCLUDED
-#define ACTIVITY4_H_INCLUDED
+#ifndef Activity4H
+#define Activity4H
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -18,13 +18,13 @@
  * @brief macro for data not received
  * 
  */
-#define DATA_NOT_RECEIVED !(UCSR0A&(1<<RXC0))
+#define NoDataReceived !(UCSR0A&(1<<RXC0))
 
 /**
  * @brief macro for data not written
  * 
  */
-#define DATA_NOT_WRITTEN !(UCSR0A&(1<<UDRE0))
+#define NoDataWritten !(UCSR0A&(1<<UDRE0))
 
 
 /**
