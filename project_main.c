@@ -17,4 +17,6 @@ if(act1==1)
 act2=activity2();
 act3=activity3(act2);
 activity4(act3);
-}}}
+}
+}
+}
